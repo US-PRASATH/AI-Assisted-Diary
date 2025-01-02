@@ -9,26 +9,27 @@ import pyrebase
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-genai.configure(api_key="AIzaSyBR9qyJ6S7RBBQfGhmZM39sE19Z4Xa6J9A")
+genai.configure(api_key="YOUR_API_KEY")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 
 # Use a service account.
-cred = credentials.Certificate('C:/Users/uspra/OneDrive/Desktop/Projects/AI-Assisted-Diary/backend/journalapp/ai-assisted-diary-443711-6bddeded7d32.json')
+cred = credentials.Certificate('path-to-credentials-json')
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
-firebase_config = {
-  "apiKey": "AIzaSyBUpjGz9dss8ZnZnTfzUpza1ZIvUOsr3nE",
-  "authDomain": "ai-assisted-diary.firebaseapp.com",
-  "projectId": "ai-assisted-diary",
-  "storageBucket": "ai-assisted-diary.firebasestorage.app",
-  "messagingSenderId": "445293697000",
-  "appId": "1:445293697000:web:70d8bbcff9c8791f11b65d",
-  "measurementId": "G-FF5YXP95XP",
-  "databaseURL": "https://ai-assisted-diary.firebaseio.com"
+firebaseConfig = {
+  "apiKey": "FIREBASE_API_KEY",
+  "authDomain": "FIREBASE_AUTH_DOMAIN",
+  "projectId": "FIREBASE_PROJECT_ID",
+  "storageBucket": "FIREBASE_STORAGE_BUCKET",
+  "messagingSenderId": "FIREBASE_MESSAGING_SENDER_ID",
+  "appId": "FIREBASE_APP_ID",
+  "measurementId": "FIREBASE_MEASUREMENT_ID",
+  "databaseURL": "FIREBASE_DATABASE_URL"
 }
+
 
 firebase = pyrebase.initialize_app(firebase_config)
 auth = firebase.auth()
